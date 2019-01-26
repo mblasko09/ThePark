@@ -16,10 +16,16 @@ class Species(Enum):
 class Animal(models.Model):
     name = models.TextField()
     age = models.IntegerField()
-    species = models.Species()
+    species = Species()
     bio = models.TextField()
     pictures = models.ArrayField(models.ImageField())
 
 class Account(models.Model):
     my_pet = Animal()
+    preference = Species()
     matches = models.ArrayField(Animal())
+
+class User(models.Model):
+    my_account = Account()
+    username = models.TextField()
+    password = models.TextField()
